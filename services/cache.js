@@ -14,7 +14,7 @@ const exec = mongoose.Query.prototype.exec;
 mongoose.Query.prototype.cache = (options = { time: 30 }) => {
     this.useCache = true;
     this.time = options.time;
-    this.hashKey = JSON.stringify(options.key || this.mongooseCollection.name);
+    this.hashKey = JSON.stringify(options.key || (this.mongooseCollection && this.mongooseCollection.name));
 
     return this;
 };
