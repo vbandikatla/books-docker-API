@@ -6,7 +6,7 @@ const config = require("../config");
 const client = redis.createClient({
    host: config.REDIS_HOST,
    port: config.REDIS_PORT,
-   retry_strategy: () => 500
+   retry_strategy: () => 1000
 });
 client.hget = util.promisify(client.hget);
 const exec = mongoose.Query.prototype.exec;
